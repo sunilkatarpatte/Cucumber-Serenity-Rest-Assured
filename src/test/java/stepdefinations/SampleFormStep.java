@@ -25,13 +25,13 @@ public class SampleFormStep extends ScenarioSteps {
 	@When("click on submit")
 	public void click_on_submit() {
 	    
-	    
+	    form.submitBtn();
 	}
 
-	@Then("verify all details submitted")
-	public void verify_all_details_submitted() {
+	@Then("verify all details submitted {string} scenario")
+	public void verify_all_details_submitted(String status) {
 	    
-	    form.verifyAllDetails();
+	    form.verifyAllDetails(status);
 	}
 
 }

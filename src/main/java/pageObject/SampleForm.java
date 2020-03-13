@@ -30,7 +30,7 @@ public class SampleForm extends PageObject {
 			getDriver().findElement(By.xpath(xpath)).sendKeys("Sunil Katarpatte");
 			getDriver().findElement(By.xpath(Util.getXpath(getClass().getSimpleName(), "password"))).sendKeys("***sd");;
 			
-			getDriver().findElement(By.xpath(Util.getXpath(getClass().getSimpleName(), "submitBtn"))).click();
+			
 			
 			File file = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(file, new File("./Screenshots/Screen.png"));
@@ -40,8 +40,31 @@ public class SampleForm extends PageObject {
 			assertThat("failure!!! ",is(false));
 		}
 	}
+	
+	public void submitBtn() {
+		
+		try {
+			
+			getDriver().findElement(By.xpath(Util.getXpath(getClass().getSimpleName(), "submitBtn"))).click();
+			
+		}catch(Exception e) {
+			assertThat("Failure!!! in submit method ",is(false));
+		}
+	}
 
-	public void verifyAllDetails() {
-		System.out.println("Verify all details");
+	public void verifyAllDetails(String msg) {
+		
+		try {
+			String successMsg=getDriver().findElement(By.xpath(Util.getXpath(getClass().getSimpleName(), "successMsg"))).getText();
+			if(msg.contains("Pass")) {
+				System.out.println("Successfully submitted all details");
+			}else {
+				assertThat("Failure!!! in verifyAllDetails method",is(false));
+			}
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		} 
+		
 	}
 }
