@@ -29,4 +29,16 @@ public class ApplicationStatusStepDef {
 	    	theApplication.verifyStatusCode();
 	    	//  restAssuredThat(lastResponse -> lastResponse.body(equalTo(expectedMessage)));
 	    }
+	    
+	    
+	    @Given("I perform POST operation for {string}")
+	    public void perform_POST_operation(String expectedMessage) {
+	        theApplication.postRequestForEmployee(expectedMessage);
+	    }
+	    
+	    @Then("I should see the created employee name")
+	    public void postResponse() {
+	    	theApplication.verifyPOSTStatusCode();
+	    }
+	    
 }

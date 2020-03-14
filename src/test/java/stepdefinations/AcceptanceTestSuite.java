@@ -10,7 +10,7 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
         plugin = {"pretty","rerun:target/rerun.txt"},
         features = "src/test/resources/features",
         glue={"stepdefinations"},
-        tags= {"@demo1"},
+        tags= {"@Rest"},
         monochrome=true,
         dryRun=false
 )
